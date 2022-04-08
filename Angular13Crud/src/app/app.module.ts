@@ -7,13 +7,15 @@ import { AddEventComponent } from './components/add-event/add-event.component';
 import { AppRoutingModule } from './app-routing.module';
 import { OrganizerEventsComponent } from './components/organizer-events/organizer-events.component';
 import { ChangingEventComponent } from './components/changing-event/changing-event.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddEventComponent,
     OrganizerEventsComponent,
-    ChangingEventComponent
+    ChangingEventComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

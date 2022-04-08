@@ -37,6 +37,30 @@
         />
       </div>
 
+      <div class="form-group">
+        <label for="time">time</label>
+        <input
+          type="time"
+          class="form-control"
+          id="time"
+          required
+          [(ngModel)]="event.time"
+          name="time"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="location">location</label>
+        <input
+          type="text"
+          class="form-control"
+          id="location"
+          required
+          [(ngModel)]="event.location"
+          name="location"
+        />
+      </div>
+
       <button (click)="saveEvent()" class="btn btn-success">Submit Request</button>
     </div>
 

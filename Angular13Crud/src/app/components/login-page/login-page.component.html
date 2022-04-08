@@ -1,0 +1,43 @@
+<div style="width: 400px; margine: auto;">
+  <div class="submit-form">
+      <div class="form-group">
+        <label for="name">Organization Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="organization.name"
+          name="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Organization Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          required
+          [(ngModel)]="organization.password"
+          name="password"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="category">Organization Category</label>
+        <input
+          type="category"
+          class="form-control"
+          id="category"
+          required
+          [(ngModel)]="organization.category"
+          name="category"
+        />
+      </div>
+
+      <button (click)="tryCreatingAccount()" class="btn btn-success">Create Account</button>
+    </div>
+
+    <p>{{ message }}</p>
+  </div>

@@ -37,6 +37,30 @@
           name="date"
         />
       </div>
+
+      <div class="form-group">
+        <label for="time">Time</label>
+        <input
+          type="time"
+          class="form-control"
+          id="time"
+          required
+          [(ngModel)]="currentEvent.time"
+          name="time"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input
+          type="location"
+          class="form-control"
+          id="location"
+          required
+          [(ngModel)]="currentEvent.location"
+          name="location"
+        />
+      </div>
       <div class="form-group">
         <label><strong>Status:</strong></label>
         {{ currentEvent.status ? "PENDING" : "APPROVED" }}

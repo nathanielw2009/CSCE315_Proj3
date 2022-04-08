@@ -36,7 +36,7 @@ export class OrganizerEventsComponent implements OnInit {
     this.currentIndex = -1;
   }
 
-  setActiveEvent(event: { name: string; description: string; date: string }, index: number): void {
+  setActiveEvent(event: { name: string; description: string; date: string; time: string; location: string }, index: number): void {
     this.currentEvent = event;
     this.currentIndex = index;
   }

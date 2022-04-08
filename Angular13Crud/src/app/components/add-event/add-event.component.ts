@@ -13,7 +13,9 @@ export class AddEventComponent implements OnInit {
     name: '',
     description: '',
     date: '',
-    organizerid: 0,
+    organizer: '',
+    time: '',
+    location: '',
     status: 'PENDING'
   };
   submitted = false;
@@ -28,7 +30,9 @@ export class AddEventComponent implements OnInit {
       name: this.event.name,
       description: this.event.description,
       date: this.event.date,
-      organizerid: 0,
+      organizer: '',
+      time: this.event.time,
+      location: this.event.location,
       status: 'PENDING'
     };
 
@@ -49,7 +53,9 @@ export class AddEventComponent implements OnInit {
       name: '',
       description: '',
       date: '',
-      organizerid: 0,
+      organizer: '',
+      time: '',
+      location: '',
       status: 'PENDING'
     };
   }

@@ -15,7 +15,6 @@ export class ChangingEventComponent implements OnInit {
               private Router: Router) { }
 
   ngOnInit(): void {
-    this.message = '';
     this.getEvent(this.route.snapshot.paramMap.get('id'));
   }
 
@@ -40,6 +39,7 @@ export class ChangingEventComponent implements OnInit {
         },
         error => {
           console.log(error);
+          this.message = error;
         });
   }
 

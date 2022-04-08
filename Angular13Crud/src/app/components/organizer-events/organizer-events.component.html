@@ -23,12 +23,18 @@
               <div>
                 <label><strong>Date:</strong></label> {{ currentEvent.date }}
               </div>
+              <div>
+                <label><strong>Time:</strong></label> {{ currentEvent.time }}
+              </div>
+              <div>
+                <label><strong>Location:</strong></label> {{ currentEvent.location }}
+              </div>
               <a class="badge badge-warning" routerLink="/events/{{ currentEvent.id }}">
                 Modify/Remove
               </a>
             </div>
           </div>
-          
+
         </li>
       </ul>
     </div>
