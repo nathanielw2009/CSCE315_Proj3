@@ -7,9 +7,9 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'add', component: AddEventComponent },
-  { path: 'events', component: OrganizerEventsComponent },
-  { path: 'events/:id', component: ChangingEventComponent },
+  { path: 'login/:name/add', component: AddEventComponent },
+  { path: 'login/:name', component: OrganizerEventsComponent },
+  { path: 'login/:name/:id', component: ChangingEventComponent },
   { path: 'login', component: LoginPageComponent }
 ];
 @NgModule({

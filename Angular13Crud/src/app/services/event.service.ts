@@ -40,7 +40,7 @@ export class EventService {
     }
     */
     findAllFromOrg(organizer: string): Observable<any> {
-      return this.http.get(`${baseUrl}/${organizer}`);
+      return this.http.get(`${baseUrl}/orgs/${organizer}`);
     }
 
     findAllApproved(): Observable<any> {

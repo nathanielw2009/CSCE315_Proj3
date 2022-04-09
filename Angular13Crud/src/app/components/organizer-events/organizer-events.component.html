@@ -1,6 +1,10 @@
+
 <div class="list-row">
-  <div class="col-md-8">
+  <div *ngIf="currentOrg" class="col-md-8">
     <div class="col-md-6">
+      <a class="badge badge-warning" routerLink="/login/{{ orgName }}/add">
+        Create New Event
+      </a>
       <h4>Your organization's events</h4>
       <ul class="list-group">
         <li>
@@ -29,12 +33,11 @@
               <div>
                 <label><strong>Location:</strong></label> {{ currentEvent.location }}
               </div>
-              <a class="badge badge-warning" routerLink="/events/{{ currentEvent.id }}">
+              <a class="badge badge-warning" routerLink="/login/{{ orgName }}/{{ currentEvent.id }}">
                 Modify/Remove
               </a>
             </div>
           </div>
-
         </li>
       </ul>
     </div>
@@ -44,5 +47,8 @@
         <p>Select an event to Modify or Remove</p>
       </div>
     </div>
+  </div>
+  <div *ngIf="!currentOrg" class="col-md-8">
+    <p>You are not signed in to an organization</p>
   </div>
 </div>

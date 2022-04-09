@@ -9,6 +9,7 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class ChangingEventComponent implements OnInit {
   currentEvent: any = null
+  orgName: string = ''
   message = '';
   constructor(private eventService: EventService,
               private route: ActivatedRoute,
@@ -23,6 +24,7 @@ export class ChangingEventComponent implements OnInit {
       .subscribe(
         response => {
           this.currentEvent = response;
+          this.orgName = this.currentEvent.organizer;
           console.log(response);
         },
         error => {

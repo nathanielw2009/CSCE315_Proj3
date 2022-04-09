@@ -39,4 +39,8 @@ export class OrganizationService {
       return this.http.get(`${baseUrl}/${name}`);
     }
 
+    findLogIn(name: string, password: string): Observable<any> {
+      return this.http.get(`${baseUrl}/orgs/${name}/${password}`);
+    }
+
 }

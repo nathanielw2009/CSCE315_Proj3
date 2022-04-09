@@ -1,5 +1,6 @@
+
 <div style="width: 400px; margine: auto;">
-  <div class="submit-form">
+  <div *ngIf="currentOrg" class="submit-form">
     <div *ngIf="!submitted">
       <div class="form-group">
         <label for="name">Name</label>
@@ -68,5 +69,11 @@
       <h4>You submitted successfully!</h4>
       <button class="btn btn-success" (click)="newEvent()">Create another event</button>
     </div>
+    <a class="badge badge-warning" routerLink="/login/{{ orgName }}">
+      Return to events page
+    </a>
+  </div>
+  <div *ngIf="!currentOrg">
+    <p> you are not signed into an organization </p>
   </div>
 </div>

@@ -79,6 +79,9 @@
       Modify
     </button>
     <p>{{ message }}</p>
+    <a class="badge badge-warning" routerLink="/login/{{ orgName }}">
+      Return to events page
+    </a>
   </div>
   <div *ngIf="!currentEvent">
     <br />
