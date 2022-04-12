@@ -12,6 +12,7 @@ import { OrganizationService } from 'src/app/services/organization.service';
 export class AddEventComponent implements OnInit {
   currentOrg: any = null;
   orgName: string = '';
+  orgCategory: string = '';
   event = {
     name: '',
     description: '',
@@ -19,7 +20,11 @@ export class AddEventComponent implements OnInit {
     organizer: '',
     time: '',
     location: '',
-    status: 'PENDING'
+    status: 'PENDING',
+    category: '',
+    show: false,
+    message: '',
+    roster: [],
   };
   submitted = false;
 
@@ -38,6 +43,7 @@ export class AddEventComponent implements OnInit {
         response => {
           this.currentOrg = response;
           this.orgName = name;
+          this.orgCategory = this.currentOrg[0]["category"];
           console.log(response);
           console.log(this.orgName);
         },
@@ -54,7 +60,11 @@ export class AddEventComponent implements OnInit {
       organizer: this.orgName,
       time: this.event.time,
       location: this.event.location,
-      status: 'PENDING'
+      status: 'PENDING',
+      category: this.orgCategory,
+      show: false,
+      message: '',
+      roster: []
     };
     console.log(this.orgName);
     this.eventService.create(data)
@@ -77,7 +87,11 @@ export class AddEventComponent implements OnInit {
       organizer: this.orgName,
       time: '',
       location: '',
-      status: 'PENDING'
+      status: 'PENDING',
+      category: this.orgCategory,
+      show: false,
+      message: '',
+      roster: []
     };
   }
 

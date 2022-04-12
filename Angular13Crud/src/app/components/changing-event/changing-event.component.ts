@@ -33,6 +33,9 @@ export class ChangingEventComponent implements OnInit {
   }
 
   updateEvent(): void {
+    this.currentEvent.message = '';
+    this.currentEvent.show = false;
+    this.currentEvent.status = 'PENDING';
     this.eventService.update(this.currentEvent.id, this.currentEvent)
       .subscribe(
         response => {

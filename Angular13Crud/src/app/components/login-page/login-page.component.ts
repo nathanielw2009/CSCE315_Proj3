@@ -11,17 +11,24 @@ export class LoginPageComponent implements OnInit {
   loginOrg = {
     name: '',
     password: '',
-    category: ''
+    category: '',
+    reqCategory: '',
+    changeCat: false
   };
   organization = {
     name: '',
     password: '',
-    category: ''
+    category: '',
+    reqCategory: '',
+    changeCat: false
   };
   orgName: string = '';
   loggedIn = false;
   message = '';
   loginMessage = '';
+  managerPassword = '';
+  managerLoginMessage = '';
+  managerLoggedIn = false;
   constructor(private organizationService: OrganizationService,
               private route: ActivatedRoute,
               private Router: Router) { }
@@ -51,7 +58,9 @@ export class LoginPageComponent implements OnInit {
     const data = {
       name: this.organization.name,
       password: this.organization.password,
-      category: this.organization.category
+      category: this.organization.category,
+      reqCategory: this.organization.category,
+      changeCat: false
     };
 
     this.organizationService.create(data)
@@ -86,6 +95,17 @@ export class LoginPageComponent implements OnInit {
         });
     console.log(name);
     console.log(password);
+  }
+
+  managerLogin(): void {
+    const managerPassword = this.managerPassword;
+    if (managerPassword == 'JcqiqlzBe9IaPrO5nCV1') {
+      this.managerLoggedIn = true;
+      this.managerLoginMessage = 'You successfully signed in.';
+    } else {
+      this.managerLoggedIn = false;
+      this.managerLoginMessage = 'Your manager password was incorrect.';
+    }
   }
 
 }

@@ -19,7 +19,7 @@ export class EventService {
       return this.http.get(`${baseUrl}/${id}`);
     }
 
-    create(data: { name: string; description: string; date: string; time: string; organizer: string; location: string }): Observable<any> {
+    create(data: { name: string; description: string; date: string; time: string; organizer: string; location: string; show: boolean; message: string; category: string }): Observable<any> {
       return this.http.post(baseUrl, data);
     }
 
@@ -41,6 +41,10 @@ export class EventService {
     */
     findAllFromOrg(organizer: string): Observable<any> {
       return this.http.get(`${baseUrl}/orgs/${organizer}`);
+    }
+
+    findAllShownFromOrg(organizer: string): Observable<any> {
+      return this.http.get(`${baseUrl}/orgs/${organizer}/shown`);
     }
 
     findAllApproved(): Observable<any> {

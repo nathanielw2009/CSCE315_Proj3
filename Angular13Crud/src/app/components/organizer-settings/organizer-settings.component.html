@@ -1,0 +1,34 @@
+<div>
+  <nav class="navbar">
+    <label><strong>  Howdy {{ orgName }}!  </strong></label>
+    <label><strong><a href="#" class="nav-link">Sign Out</a></strong></label>
+    <label><strong><a href="#" class="nav-link">AggieEvents</a></strong></label>
+  </nav>
+</div>
+<div style="width: 400px; margin: auto;">
+  <div *ngIf="currentOrg" class="modify-form">
+    <h4>Request Category Change</h4>
+    <label>Current Category: {{ currentOrg.category }}</label>
+    <form>
+      <div class="form-group">
+        <label for="reqCategory">Requested Category</label>
+        <input
+          type="text"
+          class="form-control"
+          id="reqCategory"
+          required
+          [(ngModel)]="currentOrg.reqCategory"
+          name="reqCategory"
+        />
+      </div>
+    </form>
+
+    <button class="badge badge-danger mr-2" (click)="changeCat()">
+      Request Category Change
+    </button>
+    <p>{{ message }}</p>
+    <a class="badge badge-warning" routerLink="/login/{{ orgName }}">
+      Return to events page
+    </a>
+  </div>
+</div>

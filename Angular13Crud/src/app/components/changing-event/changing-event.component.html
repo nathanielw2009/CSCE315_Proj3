@@ -1,3 +1,10 @@
+<div>
+  <nav class="navbar">
+    <label><strong>  Howdy {{ orgName }}!  </strong></label>
+    <label><strong><a href="#" class="nav-link">Sign Out</a></strong></label>
+    <label><strong><a href="#" class="nav-link">AggieEvents</a></strong></label>
+  </nav>
+</div>
 <div style="width: 400px; margin: auto;">
   <div *ngIf="currentEvent" class="modify-form">
     <h4>Event</h4>
@@ -63,7 +70,11 @@
       </div>
       <div class="form-group">
         <label><strong>Status:</strong></label>
-        {{ currentEvent.status ? "PENDING" : "APPROVED" }}
+        {{ currentEvent.status }}
+      </div>
+      <div class="form-group">
+        <label><strong>Feedback:</strong></label>
+        {{ currentEvent.message }}
       </div>
     </form>
 

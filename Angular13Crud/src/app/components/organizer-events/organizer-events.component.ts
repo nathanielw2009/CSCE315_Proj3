@@ -12,6 +12,7 @@ export class OrganizerEventsComponent implements OnInit {
   currentOrg: any = null;
   orgName: any = '';
   events: any;
+  shownEvents: any;
   currentEvent: any = null;
   currentIndex = -1;
   name = '';
@@ -51,6 +52,15 @@ export class OrganizerEventsComponent implements OnInit {
         error => {
           console.log(error)
         });
+    this.eventService.findAllShownFromOrg(this.orgName)
+      .subscribe(
+        response => {
+          this.shownEvents = response;
+          console.log(response);
+        },
+        error => {
+          console.log(error)
+        });
   }
 
   refreshEvents(): void {
@@ -62,6 +72,21 @@ export class OrganizerEventsComponent implements OnInit {
   setActiveEvent(event: { name: string; description: string; date: string; time: string; location: string }, index: number): void {
     this.currentEvent = event;
     this.currentIndex = index;
+  }
+
+  unshow(event: { name: string; description: string; date: string; time: string; location: string }, index: number): void {
+    this.currentEvent = event;
+    this.currentIndex = index;
+    this.currentEvent.show = false;
+    this.eventService.update(this.currentEvent.id, this.currentEvent)
+      .subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        });
+    this.refreshEvents();
   }
 
 }

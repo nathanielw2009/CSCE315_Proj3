@@ -19,11 +19,11 @@ export class OrganizationService {
       return this.http.get(`${baseUrl}/${id}`);
     }
 
-    create(data: { name: string; password: string; category: string }): Observable<any> {
+    create(data: { name: string; password: string; category: string; reqCategory: string; changeCat: boolean }): Observable<any> {
       return this.http.post(baseUrl, data);
     }
 
-    update(id: number, data: { name: string; description: string; date: string }): Observable<any> {
+    update(id: number, data: { name: string; password: string; category: string; reqCategory: string; changeCat: boolean }): Observable<any> {
       return this.http.put(`${baseUrl}/${id}`, data);
     }
 
@@ -41,6 +41,10 @@ export class OrganizationService {
 
     findLogIn(name: string, password: string): Observable<any> {
       return this.http.get(`${baseUrl}/orgs/${name}/${password}`);
+    }
+
+    findAllCatChange(): Observable<any> {
+      return this.http.get(`${baseUrl}/catChange`);
     }
 
 }

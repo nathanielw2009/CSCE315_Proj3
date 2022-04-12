@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { OrganizerEventsComponent } from './components/organizer-events/organizer-events.component';
 import { ChangingEventComponent } from './components/changing-event/changing-event.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { ManagerInterfaceComponent } from './components/manager-interface/manager-interface.component';
+import { OrganizerSettingsComponent } from './components/organizer-settings/organizer-settings.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     AddEventComponent,
     OrganizerEventsComponent,
     ChangingEventComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ManagerInterfaceComponent,
+    OrganizerSettingsComponent
   ],
   imports: [
     BrowserModule,

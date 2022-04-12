@@ -1,0 +1,116 @@
+<div>
+  <nav class="navbar">
+    <label><strong>  Howdy Manager!  </strong></label>
+    <label><strong><a href="#" class="nav-link">Sign Out</a></strong></label>
+    <label><strong><a href="#" class="nav-link">AggieEvents</a></strong></label>
+  </nav>
+</div>
+<div class="list-row">
+  <h4>Events for review</h4>
+    <ul class="list-group">
+      <li>
+        <div
+          class="list-group-item"
+          *ngFor="let event of events; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveEvent(event, i)"
+        >
+        {{ event.name }}
+
+          <div class="EventDesc" *ngIf="currentEvent && i == currentIndex">
+            <h4>Event</h4>
+            <div>
+              <label><strong>Event Name:</strong></label> {{ currentEvent.name }}
+            </div>
+            <div>
+              <label><strong>Organizer:</strong></label> {{ currentEvent.organizer }}
+            </div>
+            <div>
+              <label><strong>Description:</strong></label> {{ currentEvent.description }}
+            </div>
+            <div>
+              <label><strong>Date:</strong></label> {{ currentEvent.date }}
+            </div>
+            <div>
+              <label><strong>Time:</strong></label> {{ currentEvent.time }}
+            </div>
+            <div>
+              <label><strong>Location:</strong></label> {{ currentEvent.location }}
+            </div>
+            <div>
+              <label><strong>Category: </strong></label> {{ currentEvent.category }}
+            </div>
+            <button class="badge badge-danger mr-2" (click)="acceptEvent()">
+              Accept
+            </button>
+            <button class="badge badge-danger mr-2" (click)="rejectEvent()">
+              Reject
+            </button>
+            <form>
+              <div class="form-group">
+                <label for="name">Organizer feedback</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="message"
+                  required
+                  [(ngModel)]="currentEvent.message"
+                  name="message"
+                />
+              </div>
+            </form>
+            <p>{{ message }}</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  <div class="col-md-6">
+    <div *ngIf="!currentEvent">
+      <br />
+        <p>Select an event to Review</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="list-row">
+  <h4>Category changes for review</h4>
+    <ul class="list-group">
+      <li>
+        <div
+          class="list-group-item"
+          *ngFor="let org of orgs; let j = index"
+          [class.active]="j == currentOrgIndex"
+          (click)="setActiveOrg(org, j)"
+        >
+        {{ org.name }}
+
+          <div class="OrgDesc" *ngIf="currentOrg && j == currentOrgIndex">
+            <h4>Organization</h4>
+            <div>
+              <label><strong>Current Category:</strong></label> {{ currentOrg.category }}
+            </div>
+            <div>
+              <label><strong>Requested Category:</strong></label> {{ currentOrg.reqCategory }}
+            </div>
+            <button class="badge badge-danger mr-2" (click)="acceptOrg()">
+              Accept
+            </button>
+            <button class="badge badge-danger mr-2" (click)="rejectOrg()">
+              Reject
+            </button>
+            <p>{{ catMessage }}</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  <div class="col-md-6">
+    <div *ngIf="!currentOrg">
+      <br />
+        <p>Select an organization to Review</p>
+    </div>
+  </div>
+</div>
