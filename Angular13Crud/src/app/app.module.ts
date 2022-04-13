@@ -10,6 +10,7 @@ import { ChangingEventComponent } from './components/changing-event/changing-eve
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { ManagerInterfaceComponent } from './components/manager-interface/manager-interface.component';
 import { OrganizerSettingsComponent } from './components/organizer-settings/organizer-settings.component';
+import { StudentPageComponent } from './components/student-page/student-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { OrganizerSettingsComponent } from './components/organizer-settings/orga
     ChangingEventComponent,
     LoginPageComponent,
     ManagerInterfaceComponent,
-    OrganizerSettingsComponent
+    OrganizerSettingsComponent,
+    StudentPageComponent
   ],
   imports: [
     BrowserModule,
