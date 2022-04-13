@@ -10,7 +10,6 @@ import { EventSelect } from 'src/app/models/event-select.model';
   styleUrls: ['./student-page.component.css']
 })
 export class StudentPageComponent implements OnInit {
-  //events: Event[] = [];
   events: EventSelect[] = [];
 
   filter = {
