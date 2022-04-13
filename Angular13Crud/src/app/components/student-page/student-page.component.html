@@ -1,0 +1,89 @@
+<div>
+  <nav class="navbar">
+    <label><strong>  Howdy !  </strong></label>
+    <label><strong><a routerLink="" class="nav-link">Create Account</a></strong></label>
+    <label><strong><a href="#" class="nav-link">Sign Out</a></strong></label>
+  </nav>
+</div>
+
+<header>
+  <h2>Search Aggie Events</h2>
+</header>
+<section>
+  <nav>
+    <ul>
+      <li>
+        <input type="button" class="filter-button" value="Filter By:">
+      </li>
+      <li>
+        <input type="button" class="filter-button" (click)="inputStartDate()" value="Start Date:">
+      </li>
+      <li *ngIf="filter.useStartDate">
+        <input id="startdate" class="filter-input" [(ngModel)]="filter.startDate" placeholder="startDate">
+      </li>
+      <li>
+        <input type="button" class="filter-button" (click)="inputEndDate()" value="End Date:">
+      </li>
+      <li *ngIf="filter.useEndDate">
+        <input id="enddate" class="filter-input" [(ngModel)]="filter.endDate" placeholder="endDate" >
+      </li>
+      <li>
+        <input type="button" class="filter-button" (click)="inputEventName()" value="Event Name:">
+      </li>
+      <li *ngIf="filter.useEventName">
+        <input id="eventName" class="filter-input" [(ngModel)]="filter.eventName" placeholder="eventName" >
+      </li>
+    </ul>
+    <input type="button" (click)="submit()" value="Submit">
+  </nav>
+
+  <article>
+    <h1>Events</h1>
+    <table style="width:100%">
+      <tr>
+        <th class="event-field">Time</th>
+        <th class="event-field">Event Name</th>
+        <th class="event-field">Location</th>
+        <th>
+        </th>
+      </tr>
+      <tr>
+        <td colspan="3">
+         <table style="width:100%">
+           <tr>
+             <td style="width:30%">4/12/2022 10:00</td>
+             <td style="width:30%">Testing Event</td>
+             <td style="width:30%">Online</td>
+           </tr>
+           <tr>
+            <td colspan="3">This should be the event detail</td>
+           </tr>
+         </table>
+        </td>
+        <td> <input type="checkbox" value="selected"></td>
+
+      </tr>
+
+      <tr *ngFor="let singleevent of events">
+        <td colspan="3">
+          <table style="width:100%">
+            <tr>
+              <td style="width:30%">{{singleevent.event.date}}</td>
+              <td style="width:30%">{{singleevent.event.name}}</td>
+              <td style="width:30%">{{singleevent.event.location}}</td>
+            </tr>
+            <tr>
+              <td colspan="3">{{singleevent.event.description}}</td>
+            </tr>
+          </table>
+        </td>
+        <td> <input type="checkbox" name="isSelected" [(ngModel)]="singleevent.selected"></td>
+      </tr>
+
+    </table>
+
+  </article>
+</section>
+
+<div style="width: 400px; margin: auto;">
+</div>
