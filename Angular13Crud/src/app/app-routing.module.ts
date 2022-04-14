@@ -6,6 +6,8 @@ import { ChangingEventComponent } from './components/changing-event/changing-eve
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { ManagerInterfaceComponent } from './components/manager-interface/manager-interface.component';
 import { OrganizerSettingsComponent } from './components/organizer-settings/organizer-settings.component';
+import { StudentPageComponent } from './components/student-page/student-page.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -14,7 +16,8 @@ const routes: Routes = [
   { path: 'login/:name/:id', component: ChangingEventComponent },
   { path: 'manager', component: ManagerInterfaceComponent },
   { path: 'login', component: LoginPageComponent },
-  { path: 'login/:name/settings/changeCat', component: OrganizerSettingsComponent }
+  { path: 'login/:name/settings/changeCat', component: OrganizerSettingsComponent },
+  { path: 'student', component: StudentPageComponent }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

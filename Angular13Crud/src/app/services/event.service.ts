@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+
+import { Event } from 'src/app/models/event.model';
 
 const baseUrl = 'http://project3postgresql-env.eba-s8mjfkr6.us-east-1.elasticbeanstalk.com/api/events';
 // services that access the backend for event queries
@@ -47,11 +50,41 @@ export class EventService {
       return this.http.get(`${baseUrl}/orgs/${organizer}/shown`);
     }
 
-    findAllApproved(): Observable<any> {
-      return this.http.get(`${baseUrl}/approved`);
+    findAllApproved(name: string, startDate: string, endDate: string, organizer: string, location: string, category: string): Observable<any> {
+      console.log(`${baseUrl}/approved?name=${name}&location=${location}&startDate=${startDate}&endDate=${endDate}&organizer=${organizer}&category=${category}`);
+      return this.http.get(`${baseUrl}/approved?name=${name}&location=${location}&startDate=${startDate}&endDate=${endDate}&organizer=${organizer}&category=${category}`);
     }
 
     findAllPending(): Observable<any> {
       return this.http.get(`${baseUrl}/pending`);
+    }
+
+    getEvents(): Observable<Event[]> {
+      return this.http.get<Event[]>(baseUrl)
+        .pipe(
+          tap(_ => console.log('fetched events')),
+          catchError(this.handleError<Event[]>('getEvents', []))
+        );
+    }
+
+    /**
+     * Handle Http operation that failed.
+     * Let the app continue.
+     *
+     * @param operation - name of the operation that failed
+     * @param result - optional value to return as the observable result
+     */
+    private handleError<T>(operation = 'operation', result?: T) {
+      return (error: any): Observable<T> => {
+
+        // TODO: send the error to remote logging infrastructure
+        console.error(error); // log to console instead
+
+        // TODO: better job of transforming error for user consumption
+        console.log(`${operation} failed: ${error.message}`);
+
+        // Let the app keep running by returning an empty result.
+        return of(result as T);
+      };
     }
 }
