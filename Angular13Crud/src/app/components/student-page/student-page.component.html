@@ -1,89 +1,143 @@
 <div>
   <nav class="navbar">
-    <label><strong>  Howdy !  </strong></label>
+    <label><strong>  Howdy!  </strong></label>
     <label><strong><a routerLink="" class="nav-link">Create Account</a></strong></label>
-    <label><strong><a href="#" class="nav-link">Sign Out</a></strong></label>
   </nav>
 </div>
+<div style="width: 400px; margine: auto;">
+  <div class="modify-form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="name"
+          name="name"
+        />
+      </div>
 
-<header>
-  <h2>Search Aggie Events</h2>
-</header>
-<section>
-  <nav>
-    <ul>
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <input
+          type="date"
+          class="form-control"
+          id="startDate"
+          required
+          [(ngModel)]="startDate"
+          name="startDate"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="endDate">End Date</label>
+        <input
+          type="date"
+          class="form-control"
+          id="endDate"
+          required
+          [(ngModel)]="endDate"
+          name="endDate"
+        />
+      </div>
+      <br>
+      <div class="form-group">
+      <label for="endDate">Category</label>
+      <mat-form-field appearance="outline">
+        <select matNativeControl [(ngModel)]="category" name="cat">
+          <option value="" selected></option>
+          <option *ngFor="let cat of categories" [value]="cat">
+            {{cat}}
+          </option>
+        </select>
+      </mat-form-field>
+      </div>
+      <br>
+      <div class="form-group">
+      <label for="endDate">Location</label>
+      <mat-form-field appearance="outline">
+        <select matNativeControl [(ngModel)]="location" name="loc">
+          <option value="" selected></option>
+          <option *ngFor="let loc of locations" [value]="loc">
+            {{loc}}
+          </option>
+        </select>
+      </mat-form-field>
+      </div>
+      <br>
+      <div class="form-group">
+      <label for="endDate">Organization</label>
+      <mat-form-field appearance="outline">
+        <select matNativeControl [(ngModel)]="organizer" name="org">
+          <option value="" selected></option>
+          <option *ngFor="let org of organizers" [value]="org">
+            {{org}}
+          </option>
+        </select>
+      </mat-form-field>
+      </div>
+
+      <button (click)="getEvents()" class="btn btn-success">Search</button>
+      <div class="form-group">
+        <label for="name">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          required
+          [(ngModel)]="email"
+          name="email"
+        />
+      </div>
+      <button (click)="addEmails()" class="btn btn-sucess">Subscribe to emails</button>
+      <p>{{message}}</p>
+    </div>
+</div>
+
+
+
+
+<div class="list-row">
+  <h4>Events</h4>
+    <ul class="list-group">
       <li>
-        <input type="button" class="filter-button" value="Filter By:">
-      </li>
-      <li>
-        <input type="button" class="filter-button" (click)="inputStartDate()" value="Start Date:">
-      </li>
-      <li *ngIf="filter.useStartDate">
-        <input id="startdate" class="filter-input" [(ngModel)]="filter.startDate" placeholder="startDate">
-      </li>
-      <li>
-        <input type="button" class="filter-button" (click)="inputEndDate()" value="End Date:">
-      </li>
-      <li *ngIf="filter.useEndDate">
-        <input id="enddate" class="filter-input" [(ngModel)]="filter.endDate" placeholder="endDate" >
-      </li>
-      <li>
-        <input type="button" class="filter-button" (click)="inputEventName()" value="Event Name:">
-      </li>
-      <li *ngIf="filter.useEventName">
-        <input id="eventName" class="filter-input" [(ngModel)]="filter.eventName" placeholder="eventName" >
+        <div
+          class="list-group-item"
+          *ngFor="let event of events; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveEvent(event, i)"
+        >
+        {{ event.name }}
+
+          <div class="EventDesc" *ngIf="currentEvent && i == currentIndex">
+            <h4>Event</h4>
+            <div>
+              <label><strong>Event Name:</strong></label> {{ currentEvent.name }}
+            </div>
+            <div>
+              <label><strong>Organizer:</strong></label> {{ currentEvent.organizer }}
+            </div>
+            <div>
+              <label><strong>Description:</strong></label> {{ currentEvent.description }}
+            </div>
+            <div>
+              <label><strong>Date:</strong></label> {{ currentEvent.date }}
+            </div>
+            <div>
+              <label><strong>Time:</strong></label> {{ currentEvent.time }}
+            </div>
+            <div>
+              <label><strong>Location:</strong></label> {{ currentEvent.location }}
+            </div>
+            <div>
+              <label><strong>Category: </strong></label> {{ currentEvent.category }}
+            </div>
+            <button class="badge badge-danger mr-2" (click)="addEvent(currentEvent)">
+              get Emails
+            </button>
+          </div>
+        </div>
       </li>
     </ul>
-    <input type="button" (click)="submit()" value="Submit">
-  </nav>
-
-  <article>
-    <h1>Events</h1>
-    <table style="width:100%">
-      <tr>
-        <th class="event-field">Time</th>
-        <th class="event-field">Event Name</th>
-        <th class="event-field">Location</th>
-        <th>
-        </th>
-      </tr>
-      <tr>
-        <td colspan="3">
-         <table style="width:100%">
-           <tr>
-             <td style="width:30%">4/12/2022 10:00</td>
-             <td style="width:30%">Testing Event</td>
-             <td style="width:30%">Online</td>
-           </tr>
-           <tr>
-            <td colspan="3">This should be the event detail</td>
-           </tr>
-         </table>
-        </td>
-        <td> <input type="checkbox" value="selected"></td>
-
-      </tr>
-
-      <tr *ngFor="let singleevent of events">
-        <td colspan="3">
-          <table style="width:100%">
-            <tr>
-              <td style="width:30%">{{singleevent.event.date}}</td>
-              <td style="width:30%">{{singleevent.event.name}}</td>
-              <td style="width:30%">{{singleevent.event.location}}</td>
-            </tr>
-            <tr>
-              <td colspan="3">{{singleevent.event.description}}</td>
-            </tr>
-          </table>
-        </td>
-        <td> <input type="checkbox" name="isSelected" [(ngModel)]="singleevent.selected"></td>
-      </tr>
-
-    </table>
-
-  </article>
-</section>
-
-<div style="width: 400px; margin: auto;">
 </div>

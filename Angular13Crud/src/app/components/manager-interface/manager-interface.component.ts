@@ -33,6 +33,9 @@ export class ManagerInterfaceComponent implements OnInit {
       .subscribe(
         response => {
           this.events = response;
+          for (var index in this.events) {
+            this.events[index]["date"] = this.events[index]["date"].substring(0,10);
+          }
           console.log(response);
         },
         error => {

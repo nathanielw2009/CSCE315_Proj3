@@ -50,8 +50,9 @@ export class EventService {
       return this.http.get(`${baseUrl}/orgs/${organizer}/shown`);
     }
 
-    findAllApproved(): Observable<any> {
-      return this.http.get(`${baseUrl}/approved`);
+    findAllApproved(name: string, startDate: string, endDate: string, organizer: string, location: string, category: string): Observable<any> {
+      console.log(`${baseUrl}/approved?name=${name}&location=${location}&startDate=${startDate}&endDate=${endDate}&organizer=${organizer}&category=${category}`);
+      return this.http.get(`${baseUrl}/approved?name=${name}&location=${location}&startDate=${startDate}&endDate=${endDate}&organizer=${organizer}&category=${category}`);
     }
 
     findAllPending(): Observable<any> {

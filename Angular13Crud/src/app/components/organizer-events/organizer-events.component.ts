@@ -47,7 +47,11 @@ export class OrganizerEventsComponent implements OnInit {
       .subscribe(
         response => {
           this.events = response;
-          console.log(response);
+
+          for (var index in this.events) {
+            this.events[index]["date"] = this.events[index]["date"].substring(0,10);
+          }
+          console.log(this.events);
         },
         error => {
           console.log(error)
