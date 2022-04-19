@@ -1,6 +1,34 @@
+<div>
+  <nav class="navbar">
+    <label><strong>  Howdy {{ orgName }}!  </strong></label>
+    <label><strong><a href="#" class="nav-link">Sign Out</a></strong></label>
+    <label><strong><a routerLink="/login/{{ orgName }}/settings/changeCat" class="nav-link">Settings</a></strong></label>
+  </nav>
+</div>
 <div class="list-row">
-  <div class="col-md-8">
+  <div *ngIf="currentOrg" class="col-md-8">
     <div class="col-md-6">
+      <h4>Feedback Log</h4>
+      <ul class="list-group">
+        <li>
+          <div
+            class="list-group-item"
+            *ngFor="let event of shownEvents; let i = index"
+            [class.active]="i == currentIndex"
+            (click)="unshow(event, i)"
+          >
+          {{ event.name }} was {{ event.status }}
+            <div class="EventDesc">
+              <div>
+                <label><strong>Feedback:</strong></label> {{ event.message }}
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <a class="badge badge-warning" routerLink="/login/{{ orgName }}/add">
+        Create New Event
+      </a>
       <h4>Your organization's events</h4>
       <ul class="list-group">
         <li>
@@ -23,12 +51,23 @@
               <div>
                 <label><strong>Date:</strong></label> {{ currentEvent.date }}
               </div>
-              <a class="badge badge-warning" routerLink="/events/{{ currentEvent.id }}">
+              <div>
+                <label><strong>Time:</strong></label> {{ currentEvent.time }}
+              </div>
+              <div>
+                <label><strong>Location:</strong></label> {{ currentEvent.location }}
+              </div>
+              <div>
+                <label><strong>Status:</strong></label> {{ currentEvent.status }}
+              </div>
+              <div>
+                <label><strong>FeedBack:</strong></label> {{ currentEvent.message }}
+              </div>
+              <a class="badge badge-warning" routerLink="/login/{{ orgName }}/{{ currentEvent.id }}">
                 Modify/Remove
               </a>
             </div>
           </div>
-          
         </li>
       </ul>
     </div>
@@ -38,5 +77,8 @@
         <p>Select an event to Modify or Remove</p>
       </div>
     </div>
+  </div>
+  <div *ngIf="!currentOrg" class="col-md-8">
+    <p>You are not signed in to an organization</p>
   </div>
 </div>

@@ -1,0 +1,119 @@
+<div>
+  <nav class="navbar">
+    <label><strong>  Howdy {{ orgName }}!  </strong></label>
+    <label><strong><a routerLink="" class="nav-link">Create Account</a></strong></label>
+    <label><strong><a routerLink="/student" class="nav-link">AggieEvents</a></strong></label>
+
+  </nav>
+</div>
+<div style="width: 400px; margine: auto;">
+  <div class="modify-form">
+    <label><strong>Sign in to Organization</strong></label>
+      <div class="form-group">
+        <label for="name">Organization Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="loginOrg.name"
+          name="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Organization Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          required
+          [(ngModel)]="loginOrg.password"
+          name="password"
+        />
+      </div>
+      <div *ngIf="loggedIn">
+        <a class="badge badge-warning" routerLink="/login/{{ orgName }}/">
+          Continue to events overview
+        </a>
+      </div>
+      <button
+        type="submit"
+        (click)="login()"
+        class="btn btn-success"
+        >Sign In</button>
+    <p>{{ loginMessage }}</p>
+  </div>
+
+
+
+
+
+  <div class="submit-form">
+    <label><strong>Create New Organization</strong></label>
+      <div class="form-group">
+        <label for="name">Organization Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="organization.name"
+          name="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Organization Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          required
+          [(ngModel)]="organization.password"
+          name="password"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="category">Organization Category</label>
+        <input
+          type="category"
+          class="form-control"
+          id="category"
+          required
+          [(ngModel)]="organization.category"
+          name="category"
+        />
+      </div>
+
+      <button (click)="tryCreatingAccount()" class="btn btn-success">Create Account</button>
+      <p>{{ message }}</p>
+  </div>
+
+  <div class="modify-form">
+    <label><strong>Sign in as Manager</strong></label>
+      <div class="form-group">
+        <label for="password">Manager Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="managerPassword"
+          required
+          [(ngModel)]="managerPassword"
+          name="managerPassword"
+        />
+      </div>
+      <div *ngIf="managerLoggedIn">
+        <a class="badge badge-warning" routerLink="/manager/">
+          Continue to manager overview
+        </a>
+      </div>
+      <button
+        type="submit"
+        (click)="managerLogin()"
+        class="btn btn-success"
+        >Sign In</button>
+    <p>{{ managerLoginMessage }}</p>
+  </div>
+</div>

@@ -9,13 +9,13 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class ChangingEventComponent implements OnInit {
   currentEvent: any = null
+  orgName: string = ''
   message = '';
   constructor(private eventService: EventService,
               private route: ActivatedRoute,
               private Router: Router) { }
 
   ngOnInit(): void {
-    this.message = '';
     this.getEvent(this.route.snapshot.paramMap.get('id'));
   }
 
@@ -24,6 +24,7 @@ export class ChangingEventComponent implements OnInit {
       .subscribe(
         response => {
           this.currentEvent = response;
+          this.orgName = this.currentEvent.organizer;
           console.log(response);
         },
         error => {
@@ -32,6 +33,9 @@ export class ChangingEventComponent implements OnInit {
   }
 
   updateEvent(): void {
+    this.currentEvent.message = '';
+    this.currentEvent.show = false;
+    this.currentEvent.status = 'PENDING';
     this.eventService.update(this.currentEvent.id, this.currentEvent)
       .subscribe(
         response => {
@@ -40,6 +44,7 @@ export class ChangingEventComponent implements OnInit {
         },
         error => {
           console.log(error);
+          this.message = error;
         });
   }
 
