@@ -33,6 +33,13 @@
 .filter-input {
   padding-left: 5px;
 }
+.filter-label {
+  padding-right: 5px;
+}
+
+.filter-gaps {
+  padding-top: 20vh;
+}
 .event-field {
    min-width: 105px;
 }
