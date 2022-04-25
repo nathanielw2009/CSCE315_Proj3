@@ -7,10 +7,10 @@
 
 <section>
   <nav>
-<div style="width: 400px; margin: auto;">
+<div style="width: 400px; margine: auto;">
   <div class="modify-form">
       <div class="form-group">
-        <label for="name" class="filter-label">Name</label>
+        <label for="name">Name</label>
         <input
           type="text"
           class="form-control"
@@ -22,7 +22,7 @@
       </div>
 
       <div class="form-group">
-        <label for="startDate" class="filter-label">Start Date</label>
+        <label for="startDate">Start Date</label>
         <input
           type="date"
           class="form-control"
@@ -34,7 +34,7 @@
       </div>
 
       <div class="form-group">
-        <label for="endDate" class="filter-label">End  Date </label>
+        <label for="endDate">End Date</label>
         <input
           type="date"
           class="form-control"
@@ -44,8 +44,9 @@
           name="endDate"
         />
       </div>
+      <br>
       <div >
-      <label for="endDate" class="filter-label">Category</label>
+      <label for="endDate">Category</label>
       <mat-form-field appearance="outline">
         <select matNativeControl [(ngModel)]="category" name="cat">
           <option value="" selected></option>
@@ -55,8 +56,9 @@
         </select>
       </mat-form-field>
       </div>
+      <br>
       <div class="form-group">
-      <label for="endDate" class="filter-label">Location</label>
+      <label for="endDate">Location</label>
       <mat-form-field appearance="outline">
         <select matNativeControl [(ngModel)]="location" name="loc">
           <option value="" selected></option>
@@ -66,8 +68,9 @@
         </select>
       </mat-form-field>
       </div>
+      <br>
       <div class="form-group">
-      <label for="endDate" class="filter-label">Organization</label>
+      <label for="endDate">Organization</label>
       <mat-form-field appearance="outline">
         <select matNativeControl [(ngModel)]="organizer" name="org">
           <option value="" selected></option>
@@ -78,13 +81,9 @@
       </mat-form-field>
       </div>
 
-      <br>
       <button (click)="getEvents()" class="btn btn-success">Search</button>
-      <br>
-      <br>
-      <br>
-     <div class="form-group">
-        <label for="name" class="filter-label">Email</label>
+      <div class="form-group">
+        <label for="name">Email</label>
         <input
           type="text"
           class="form-control"
@@ -94,7 +93,6 @@
           name="email"
         />
       </div>
-      <br>
       <button (click)="addEmails()" class="btn btn-sucess">Subscribe to emails</button>
       <p>{{message}}</p>
     </div>
@@ -118,6 +116,7 @@
     </tr>
 
     <tr *ngFor="let event of events; let i = index"
+          [class.active]="i == currentIndex"
           (click)="setActiveEvent(event, i)"
         >
             <td>
