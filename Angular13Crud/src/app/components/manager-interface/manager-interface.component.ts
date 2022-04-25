@@ -78,7 +78,7 @@ export class ManagerInterfaceComponent implements OnInit {
   acceptEvent() {
     this.currentEvent.status = 'APPROVED';
     this.currentEvent.show = true;
-    this.eventService.update(this.currentEvent.id, this.currentEvent)
+    this.eventService.approve(this.currentEvent.id, this.currentEvent)
       .subscribe(
         response => {
           console.log(response);

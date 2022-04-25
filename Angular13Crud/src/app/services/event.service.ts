@@ -30,6 +30,10 @@ export class EventService {
       return this.http.put(`${baseUrl}/${id}`, data);
     }
 
+    approve(id: number, data: { name: string; description: string; date: string; time: string; location: string }): Observable<any> {
+      return this.http.put(`${baseUrl}/approve/${id}`, data);
+    }
+
     delete(id: number): Observable<any> {
       return this.http.delete(`${baseUrl}/${id}`);
     }
