@@ -1,6 +1,8 @@
-
+.submit-form {
+  padding-top: 30vh;
+}
 .modify-form {
-  padding-top: 20vh;
+  padding-top: 30vh;
 }
 .navbar {
     position: absolute;
@@ -17,10 +19,6 @@
     vertical-align: top;
     font-family: Arial;
     color: white;
-}
-
-.submit-form {
-  padding-top: 10vh;
 }
 
 .nav-link {
