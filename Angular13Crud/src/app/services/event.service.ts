@@ -18,6 +18,10 @@ export class EventService {
       return this.http.get(baseUrl);
     }
 
+    emails(): Observable<any> {
+      return this.http.get(`${baseUrl}/burst`);
+    }
+
     get(id: number): Observable<any> {
       return this.http.get(`${baseUrl}/${id}`);
     }

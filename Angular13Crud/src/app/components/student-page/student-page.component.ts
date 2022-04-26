@@ -55,7 +55,11 @@ export class StudentPageComponent implements OnInit {
       this.message = 'You will recieve emails about these events.';
       for (var index in this.currentEvents) {
         if (!this.currentEvents[index].roster.includes(this.email)) {
-          this.currentEvents[index].roster.push(this.email);
+          if (this.currentEvents[index].roster === null) {
+            this.currentEvents[index].roster = [this.email];
+          } else {
+            this.currentEvents[index].roster.push(this.email);
+          }
           this.eventService.update(this.currentEvents[index].id, this.currentEvents[index])
             .subscribe(
               response => {

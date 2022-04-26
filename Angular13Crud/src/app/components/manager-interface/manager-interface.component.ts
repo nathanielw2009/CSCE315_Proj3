@@ -43,6 +43,18 @@ export class ManagerInterfaceComponent implements OnInit {
         });
   }
 
+  emails() {
+    this.eventService.emails()
+    .subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
   getOrgs() {
     this.organizationService.findAllCatChange()
       .subscribe(
