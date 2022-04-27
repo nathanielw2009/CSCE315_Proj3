@@ -1,10 +1,16 @@
 
 .modify-form {
   padding-top: 20vh;
+  font-family: Arial;
+}
+.login-page {
+  text-align: center;
+  background: #D6D3C4;
+  font-family: Arial;
 }
 .navbar {
     position: absolute;
-    background-color: maroon;
+    background-color: #500000;
     background-size: 100vw 25vh;
     border: 4px solid rgb(255, 255, 255);
     display: flex;
@@ -19,12 +25,39 @@
     color: white;
 }
 
+.button {
+  background-color: #500000;
+  border: none;
+  color: white;
+  padding: 8px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 8px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: Arial;
+}
+
+.filter-label {
+  padding-right: 5px;
+  font-family: Arial;
+}
+
 .submit-form {
   padding-top: 10vh;
+  font-family: Arial;
+}
+.submit-form-last {
+  padding-top: 10vh;
+  padding-bottom: 20vh;
+  font-family: Arial;
 }
 
 .nav-link {
   margin-left: 5.5vw;
   margin-right: 5.5vw;
   color: white;
+  font-family: Arial;
 }

@@ -4,13 +4,13 @@
     <label><strong><a href="#" class="nav-link">Sign Out</a></strong></label>
   </nav>
 </div>
-<div style="width: 400px; margin: auto;">
+<div class="settings-page">
   <div *ngIf="currentOrg" class="modify-form">
     <h4>Request Category Change</h4>
     <label>Current Category: {{ currentOrg.category }}</label>
     <form>
-      <div class="form-group">
-        <label for="reqCategory">Requested Category</label>
+      <div class="settings-padding-label">
+        <label for="reqCategory" class="filter-label">Requested Category</label>
         <input
           type="text"
           class="form-control"
@@ -22,7 +22,7 @@
       </div>
     </form>
 
-    <button class="badge badge-danger mr-2" (click)="changeCat()">
+    <button class="button badge badge-danger mr-2" (click)="changeCat()">
       Request Category Change
     </button>
     <p>{{ message }}</p>
