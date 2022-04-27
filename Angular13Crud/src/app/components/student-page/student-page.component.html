@@ -79,7 +79,7 @@
       </div>
 
       <br>
-      <button (click)="getEvents()" class="btn btn-success">Search</button>
+      <button (click)="getEvents()" class="button btn btn-success">Search</button>
       <br>
       <br>
       <br>
@@ -95,7 +95,7 @@
         />
       </div>
       <br>
-      <button (click)="addEmails()" class="btn btn-sucess">Subscribe to emails</button>
+      <button (click)="addEmails()" class="button btn btn-success">Subscribe to emails</button>
       <p>{{message}}</p>
     </div>
 </div>
@@ -142,7 +142,7 @@
               {{ event.category }}
             </td>
             <td>
-            <button class="badge badge-danger mr-2" (click)="addEvent(event)">
+            <button class="reminder-button badge badge-danger mr-2" (click)="addEvent(event)">
               get Emails
             </button>
             </td>
