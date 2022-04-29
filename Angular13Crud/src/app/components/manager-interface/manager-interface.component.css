@@ -36,6 +36,16 @@
   font-family: Arial;
 }
 
+.event-review {
+  text-align: center;
+  background: #D6D3C4;
+  font-family: Arial;
+  padding-top: 20vh;
+  width: 400px;
+  margin: auto;
+  font-family: Arial;
+}
+
 .button {
   background-color: #500000;
   border: none;
